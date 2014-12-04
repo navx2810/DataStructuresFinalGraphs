@@ -10,6 +10,10 @@ import java.util.Scanner;
 import entities.Graph;
 import entities.Node;
 
+
+/*
+ * http://en.wikipedia.org/wiki/Graph_traversal
+ */
 public class EdgeNodeBuilder 
 {
 	private enum state { VERTICIES, EDGES, CASES }
