@@ -10,12 +10,11 @@ public class Node
 	private ArrayList<Edge> edges;
 	public String locationName;
 	
-	public int longitude, latitude, height;
+	public double longitude, latitude, height;
 	
 	
 	
-	public Node(int id, String locationName, int longitude, int latitude,
-			int height) {
+	public Node(int id, String locationName, double longitude, double latitude, double height) {
 		this.id = id;
 		this.locationName = locationName;
 		this.longitude = longitude;
@@ -24,15 +23,14 @@ public class Node
 		edges = new ArrayList<Edge>();
 	}
 
-
-	public void addEdge(Edge edge)
+	public void addEdgeTo(Node node, double weight)
 	{
-		edges.add(edge);
+		edges.add( new Edge(node, weight) );
 	}
 	
 	public void addEdgeTo(Node node)
 	{
-		addEdge(new Edge(node));
+		edges.add( new Edge(node) );
 	}
 	
 	public boolean hasEdge(Edge edge)
