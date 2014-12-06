@@ -77,13 +77,19 @@ public class EdgeNodeBuilder
 			}
 			
 			scanner.close();
-			graph.starts = startNodes;
-			graph.ends = endNodes;
 			System.out.println("done");
 			
 		} catch (FileNotFoundException e) { e.printStackTrace(); }
 		
 		
+	}
+	
+	public Queue<Node> getStartNodes() {
+		return startNodes;
+	}
+	
+	public Queue<Node> getEndNodes() {
+		return endNodes;
 	}
 	
 	private boolean isAnIdentifier(String line) 
