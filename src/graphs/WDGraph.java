@@ -1,7 +1,6 @@
 package graphs;
 
 import java.util.ArrayList;
-import java.util.Queue;
 
 import entities.Node;
 
@@ -9,7 +8,6 @@ public class WDGraph
 {
 	public ArrayList<Node> nodes;	// Adjacency List
 	public Node entry, destination;
-	public Queue<Node> starts, ends;	// TODO: Place this in a manager class which will handling path-finding
 	
 	public WDGraph() 
 	{
