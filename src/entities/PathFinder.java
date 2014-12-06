@@ -1,6 +1,6 @@
+package entities;
 import java.util.HashMap;
 
-import entities.Node;
 import graphs.WDGraph;
 
 
@@ -18,17 +18,22 @@ public class PathFinder {
 		visited = new HashMap<Node, Boolean>();
 		
 		for(Node node : graph.nodes)
-			visited.put(node, true);
+			visited.put(node, false);
+		
 	}
 	
-	private void findBestPath()
+	public void findBestPath()
 	{
+		visited.put(origin, true);
 		// Insert Dijkstra's Algorithm here
+		
+		printPath();
 	}
 	
 	private void printPath()
 	{
 		// Print path here
+		System.out.println("\nbest path\n");
 	}
 	
 	
