@@ -1,21 +1,25 @@
-import javax.swing.JFileChooser;
+import java.io.File;
 
 import util.EdgeNodeBuilder;
 import entities.Graph;
+import graphs.WDGraph;
+import graphs.WGraph;
 
 
 public class Driver {
 
 	public static void main(String[] args) 
 	{
-		Graph graph = new Graph();
+		WDGraph graph = new WDGraph();
 		
 		EdgeNodeBuilder edgeNodeBuilder = new EdgeNodeBuilder(graph);
 		
-		JFileChooser chooser = new JFileChooser();
+		edgeNodeBuilder.readFromFile(new File("final.data"));
 		
-		if ( chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION )
-			edgeNodeBuilder.readFromFile(chooser.getSelectedFile());
+//		JFileChooser chooser = new JFileChooser();
+//		
+//		if ( chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION )
+//			edgeNodeBuilder.readFromFile(chooser.getSelectedFile());
 	}
 
 }
