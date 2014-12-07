@@ -9,11 +9,8 @@ public class Node
 	public int id;
 	public ArrayList<Edge> edges;
 	public String locationName;
-	public double minDistance = Double.MAX_VALUE;
 	
 	public double longitude, latitude, height;
-	
-	
 	
 	public Node(int id, String locationName, double longitude, double latitude, double height) {
 		this.id = id;
