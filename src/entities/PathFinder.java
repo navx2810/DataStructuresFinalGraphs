@@ -66,6 +66,16 @@ public class PathFinder {
 			path.add(target);
 		Collections.reverse(path);
 		System.out.println( String.format("|| Best Path to %s from %s is : %s ||", origin, destination, path) );
+		
+	}
+
+	private void printStreetNames(ArrayList<Node> path) 
+	{
+		String s = "Street Directions : ";
+		for(Node node : path)
+			s += node.locationName+", ";
+		s += "\n";
+		System.out.println(s);
 	}
 	
 	
