@@ -53,7 +53,6 @@ public class PathFinder {
 				}
 			}
 		}	
-		// Insert Dijkstra's Algorithm here
 		
 		printPath(previousMap);
 	}
@@ -61,7 +60,7 @@ public class PathFinder {
 	private void printPath(HashMap<Node,Node> previousMap)
 	{
 		ArrayList<Node> path = new ArrayList<Node>();
-		for( Node target = destination; target != null; target = previousMap.get(target))
+		for( Node target = destination; target != null; target = previousMap.get(target))	// TODO: Switch the positions in the HashMap so I don't have to flip the array
 			path.add(target);
 		Collections.reverse(path);
 		System.out.println("\nbest path\n");
