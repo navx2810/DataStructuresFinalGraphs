@@ -108,7 +108,7 @@ public class EdgeNodeBuilder
 		double latitude = Double.parseDouble(container[2]);
 		double height  = Double.parseDouble(container[3]);
 		
-		nodes.add(new Node(id, container[3], longitude, latitude, height));
+		nodes.add(new Node(id, container[4], longitude, latitude, height));
 	}
 	
 	private void readEdge(String line)
