@@ -46,6 +46,15 @@ public class Node
 				return true;
 		return false;
 	}
+	
+	public ArrayList<Node> getAdjacentNodes()
+	{
+		ArrayList<Node> adjacents = new ArrayList<Node>();
+		for(Edge edge : edges)
+			if ( !adjacents.contains(edge.target) )
+				adjacents.add(edge.target);
+		return adjacents;
+	}
 
 	@Override
 	public String toString() {
