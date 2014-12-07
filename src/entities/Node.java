@@ -7,8 +7,9 @@ public class Node
 {
 	public static int NODE_COUNT = 0;
 	public int id;
-	private ArrayList<Edge> edges;
+	public ArrayList<Edge> edges;
 	public String locationName;
+	public double minDistance = Double.MAX_VALUE;
 	
 	public double longitude, latitude, height;
 	
