@@ -31,8 +31,11 @@ public class PathFinder {
 		Queue<Node> nodeQueue = new LinkedList<Node>();
 		HashMap<Node, Node> previousMap = new HashMap<Node, Node>();
 		
-		origin.minDistance = 0.0;
+		HashMap<Node, Double> distanceMap = new HashMap<Node, Double>();
+		for(Node node : graph.nodes)
+			distanceMap.put(node, Double.MAX_VALUE);
 		
+		distanceMap.put(origin, 0.0);
 		nodeQueue.add(origin);
 		
 		while ( !nodeQueue.isEmpty() )
@@ -42,12 +45,12 @@ public class PathFinder {
 			for(Edge edge : node.edges)
 			{
 				Node target = edge.target;
-				double distanceThrough = node.minDistance + edge.weight;
-				if ( distanceThrough < target.minDistance)
+				double distanceThrough = distanceMap.get(node) + edge.weight;
+				if ( distanceThrough < distanceMap.get(target) )
 				{
 					nodeQueue.remove( target );
-					target.minDistance = distanceThrough;
-					previousMap.put(target, node);
+					distanceMap.put( target, distanceThrough );
+					previousMap.put( target, node );
 					nodeQueue.add( target );
 				}
 			}
