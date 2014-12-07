@@ -1,7 +1,7 @@
 import java.io.File;
 
 
-public class Driver {
+public class CIT360FinalProject {
 
 	public static void main(String[] args) 
 	{
