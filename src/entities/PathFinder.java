@@ -63,7 +63,7 @@ public class PathFinder {
 		for( Node target = destination; target != null; target = previousMap.get(target))	// TODO: Switch the positions in the HashMap so I don't have to flip the array
 			path.add(target);
 		Collections.reverse(path);
-		System.out.println("\nbest path\n");
+		System.out.println( String.format("|| Best Path to %s from %s is : %s ||", origin, destination, path) );
 	}
 	
 	
