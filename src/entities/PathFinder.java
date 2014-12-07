@@ -21,7 +21,7 @@ public class PathFinder {
 		visited = new HashMap<Node, Boolean>();
 		
 		for(Node node : graph.nodes)
-			visited.put(node, false);
+			visited.put( node, false );
 		
 	}
 	
@@ -33,7 +33,7 @@ public class PathFinder {
 		
 		HashMap<Node, Double> distanceMap = new HashMap<Node, Double>();
 		for(Node node : graph.nodes)
-			distanceMap.put(node, Double.MAX_VALUE);
+			distanceMap.put( node, Double.MAX_VALUE );
 		
 		distanceMap.put(origin, 0.0);
 		nodeQueue.add(origin);
@@ -62,7 +62,7 @@ public class PathFinder {
 	private void printPath(HashMap<Node,Node> previousMap)
 	{
 		ArrayList<Node> path = new ArrayList<Node>();
-		for( Node target = destination; target != null; target = previousMap.get(target))	// TODO: Switch the positions in the HashMap so I don't have to flip the array
+		for( Node target = destination; target != null; target = previousMap.get(target) )
 			path.add(target);
 		Collections.reverse(path);
 		System.out.println( String.format("|| Best Path to %s from %s is : %s ||", origin, destination, path) );
