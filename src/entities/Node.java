@@ -8,16 +8,9 @@ public class Node
 	public static int NODE_COUNT = 0;
 	public int id;
 	public ArrayList<Edge> edges;
-	public String locationName;
-	
-	public double longitude, latitude, height;
-	
-	public Node(int id, String locationName, double longitude, double latitude, double height) {
+
+	public Node(int id) {
 		this.id = id;
-		this.locationName = locationName;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.height = height;
 		edges = new ArrayList<Edge>();
 	}
 
