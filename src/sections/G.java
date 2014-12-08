@@ -7,7 +7,7 @@ public class G {
 
 	public G(WDGraph graph) 
 	{
-		System.out.println("***************************************************************\n*****\tProgram Output for Section C\t*****\n***************************************************************");
+		System.out.println("***************************************************************\n*****\tProgram Output for Section G\t*****\n***************************************************************");
 		
 		PathFinder finder = new PathFinder(graph, graph.nodes.get(2), graph.nodes.get(4));
 		finder.findBestPath();
