@@ -3,6 +3,7 @@ package util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -10,6 +11,17 @@ import java.util.Scanner;
 import entities.Node;
 import graphs.WDGraph;
 
+class CoordStruct
+{
+	public double latitude, longitude, height;
+
+	public CoordStruct(double latitude, double longitude, double height) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.height = height;
+	}
+	
+}
 
 /*
  * http://en.wikipedia.org/wiki/Graph_traversal
@@ -21,6 +33,8 @@ public class EdgeNodeBuilder
 	private ArrayList<Node> nodes;
 	private Queue<Node> startNodes, endNodes;
 	private WDGraph graph;
+	private HashMap<Node, CoordStruct> coordMap;
+	private HashMap<Node, String> locationNameMap;
 	
 	public EdgeNodeBuilder(WDGraph graph) 
 	{
@@ -28,6 +42,8 @@ public class EdgeNodeBuilder
 		nodes = graph.nodes;
 		startNodes = new LinkedList<Node>();
 		endNodes = new LinkedList<Node>();
+		coordMap = new HashMap<Node, CoordStruct>();
+		locationNameMap = new HashMap<Node, String>();
 	}
 	
 	public void readFromFile(File file)
@@ -108,7 +124,12 @@ public class EdgeNodeBuilder
 		double latitude = Double.parseDouble(container[2]);
 		double height  = Double.parseDouble(container[3]);
 		
-		nodes.add(new Node(id, container[4], longitude, latitude, height));
+		Node node = new Node(id);
+		coordMap.put(node, new CoordStruct(latitude, longitude, height));
+		nodes.add(node);
+		locationNameMap.put(node, container[4]);
+		
+//		nodes.add(new GPSNode(id, container[4], longitude, latitude, height));
 	}
 	
 	private void readEdge(String line)
@@ -122,11 +143,11 @@ public class EdgeNodeBuilder
 		Node b = nodes.get(v_id2);
 		
 		if ( edge_state == 1)
-			graph.addEdge(a, b);
+			graph.addEdge( a, b, calculateDistances( coordMap.get(a), coordMap.get(b) ) );
 		else
 		{
-			graph.addEdge(a, b);
-			graph.addEdge(b, a);
+			graph.addEdge(a, b, calculateDistances( coordMap.get(a), coordMap.get(b) ) );
+			graph.addEdge(b, a, calculateDistances( coordMap.get(a), coordMap.get(b) ) );
 		}
 	}
 	
@@ -138,6 +159,31 @@ public class EdgeNodeBuilder
 		
 		startNodes.add(a);
 		endNodes.add(b);
+	}
+	
+	private double calculateDistances(CoordStruct origin, CoordStruct destination)
+	{
+		double lat1 = origin.latitude;
+		double lng1 = origin.longitude;
+		double lat2 = destination.latitude;
+		double lng2 = destination.longitude;
+		
+		double earthRadius = 3958.75;	// Converts to Miles
+	    double dLat = Math.toRadians(lat2-lat1);
+	    double dLng = Math.toRadians(lng2-lng1);
+	    double sindLat = Math.sin(dLat / 2);
+	    double sindLng = Math.sin(dLng / 2);
+	    double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
+	            * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2));
+	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	    double dist = earthRadius * c;
+
+	    return dist;
+	}
+	
+	public HashMap<Node, String> getLocationNameMap() 
+	{
+		return locationNameMap;
 	}
 	
 }
