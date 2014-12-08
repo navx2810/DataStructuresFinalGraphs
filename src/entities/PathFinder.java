@@ -13,6 +13,7 @@ public class PathFinder {
 	HashMap<Node, Boolean> visited;
 	WDGraph graph;
 	Node origin, destination;
+	ArrayList<Node> path;
 	
 	public PathFinder(WDGraph graph, Node origin, Node destination) {
 		this.graph = graph;
@@ -61,7 +62,7 @@ public class PathFinder {
 	
 	private void printPath(HashMap<Node,Node> previousMap)
 	{
-		ArrayList<Node> path = new ArrayList<Node>();
+		path = new ArrayList<Node>();
 		for( Node target = destination; target != null; target = previousMap.get(target) )
 			path.add(target);
 		Collections.reverse(path);
@@ -69,17 +70,8 @@ public class PathFinder {
 		
 	}
 
-	private void printStreetNames(ArrayList<Node> path) 
+	public ArrayList<Node> getPath() 
 	{
-		String s = "Street Directions : ";
-		for(Node node : path)
-			s += node.locationName+", ";
-		s += "\n";
-		System.out.println(s);
+		return path;
 	}
-	
-	
-	
-
-
 }
