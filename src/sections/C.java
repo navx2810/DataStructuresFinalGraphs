@@ -5,45 +5,43 @@ import graphs.WDGraph;
 
 public class C {
 
+	public WDGraph graph;
+	
 	public C()
 	{
 		
 		System.out.println("***************************************************************\n*****\tProgram Output for Section C\t*****\n***************************************************************");
 		
-		WDGraph wdGraph = new WDGraph();
+		graph = new WDGraph();
 		
 		for(int x = 0; x < 6; x++)
-			wdGraph.nodes.add(new Node(x));
+			graph.nodes.add(new Node(x));
 		
-		Node currentNode = wdGraph.nodes.get(1);
-		currentNode.addEdgeTo(wdGraph.nodes.get(2), 3);
-		currentNode.addEdgeTo(wdGraph.nodes.get(5), 2);
+		graph.addEdge(graph.nodes.get(1), graph.nodes.get(2), 3.0);
+		graph.addEdge(graph.nodes.get(1), graph.nodes.get(5), 2.0);
+		graph.addEdge(graph.nodes.get(1), graph.nodes.get(0), 2.0);
 		
-		currentNode = wdGraph.nodes.get(2);
-		currentNode.addEdgeTo(wdGraph.nodes.get(5), 4);
-		currentNode.addEdgeTo(wdGraph.nodes.get(1), 1);
+		graph.addEdge(graph.nodes.get(2), graph.nodes.get(5), 4.0);
+		graph.addEdge(graph.nodes.get(2), graph.nodes.get(1), 1.0);
 		
-		currentNode = wdGraph.nodes.get(3);
-		currentNode.addEdgeTo(wdGraph.nodes.get(2), 9);
-		currentNode.addEdgeTo(wdGraph.nodes.get(4), 3);
-		currentNode.addEdgeTo(wdGraph.nodes.get(5), 2);
+		graph.addEdge(graph.nodes.get(3), graph.nodes.get(2), 9.0);
+		graph.addEdge(graph.nodes.get(3), graph.nodes.get(4), 3.0);
+		graph.addEdge(graph.nodes.get(3), graph.nodes.get(5), 2.0);
 		
-		currentNode = wdGraph.nodes.get(4);
-		currentNode.addEdgeTo(wdGraph.nodes.get(3), 2);
-		currentNode.addEdgeTo(wdGraph.nodes.get(5), 4);
+		graph.addEdge(graph.nodes.get(4), graph.nodes.get(3), 2.0);
+		graph.addEdge(graph.nodes.get(4), graph.nodes.get(5), 4.0);
 		
-		currentNode = wdGraph.nodes.get(5);
-		currentNode.addEdgeTo(wdGraph.nodes.get(4), 4);
+		graph.addEdge(graph.nodes.get(5), graph.nodes.get(4), 4.0);
 		
 		String s = "V2 is adjacent to: ";
-		for( Node node : wdGraph.nodes.get(2).getAdjacentNodes() )
+		for( Node node : graph.nodes.get(2).getAdjacentNodes() )
 			s += node + " ";
 		System.out.println(s);
 		
 		s = "V5 is adjacent to: ";
-		for( Node node : wdGraph.nodes.get(5).getAdjacentNodes() )
+		for( Node node : graph.nodes.get(5).getAdjacentNodes() )
 			s += node + " ";
-		System.out.println(s);
+		System.out.println(s + "\n\n");
 	
 	}
 	
