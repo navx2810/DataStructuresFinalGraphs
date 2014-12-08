@@ -5,8 +5,6 @@ public class Edge
 	Node target;
 	double weight;
 	
-	
-	
 	public Edge(Node target, double weight) {
 		this.target = target;
 		this.weight = weight;
@@ -16,8 +14,6 @@ public class Edge
 	{
 		this(target, 1);
 	}
-
-
 
 	@Override
 	public String toString() {
