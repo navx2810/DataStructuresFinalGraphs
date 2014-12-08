@@ -93,8 +93,6 @@ public class EdgeNodeBuilder
 			}
 			
 			scanner.close();
-			System.out.println("done");
-			
 		} catch (FileNotFoundException e) { e.printStackTrace(); }
 		
 		
