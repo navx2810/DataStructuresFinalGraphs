@@ -5,6 +5,9 @@ import sections.D;
 import sections.E;
 import sections.F;
 import sections.G;
+import sections.H;
+import sections.I;
+import sections.J;
 
 
 public class CIT360FinalProject {
@@ -17,6 +20,9 @@ public class CIT360FinalProject {
 		E e = new E();
 		F f = new F();
 		G g = new G( c.graph );
+		H h = new H( d.graph );
+		I i = new I( e.graph );
+		J j = new J( f.graph );
 		
 		PathManager manager = new PathManager(new File("final.data"));
 		manager.findPaths();
