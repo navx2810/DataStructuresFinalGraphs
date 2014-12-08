@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -13,6 +14,7 @@ public class PathManager {
 	WDGraph graph;
 	Queue<Node> startNodes, endNodes;
 	Queue<PathFinder> pathFinders;
+	HashMap<Node, String> locationNameMap;
 	
 	public PathManager(File dataFile)
 	{
@@ -28,7 +30,15 @@ public class PathManager {
 	public void findPaths()
 	{
 		while( !pathFinders.isEmpty() )
-			pathFinders.poll().findBestPath();
+		{
+			PathFinder finder = pathFinders.poll();
+			finder.findBestPath();
+			
+			String path = "Street Names: ";
+			for( Node node : finder.getPath() )
+				path += locationNameMap.get(node) + ", ";
+			System.out.println( path );
+		}
 	}
 
 	private void setUpFinders() {
@@ -41,6 +51,7 @@ public class PathManager {
 		builder.readFromFile(file);
 		startNodes = builder.getStartNodes();
 		endNodes = builder.getEndNodes();
+		locationNameMap = builder.getLocationNameMap();
 	}
 
 }
