@@ -93,6 +93,12 @@ public class EdgeNodeBuilder
 			}
 			
 			scanner.close();
+			
+			System.out.println("***************************************************************\n*****\tProgram Output for Section K\t*****\n***************************************************************");
+			System.out.println("\tFile was read appropriately\n");
+			
+			System.out.println("***************************************************************\n*****\tProgram Output for Section L\t*****\n***************************************************************");
+			System.out.println("\t Graph was created sucessfully\n");
 		} catch (FileNotFoundException e) { e.printStackTrace(); }
 		
 		

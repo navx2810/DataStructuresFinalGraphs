@@ -24,16 +24,16 @@ public class CIT360FinalProject {
 		I i = new I( e.graph );
 		J j = new J( f.graph );
 		
-		System.out.println("***************************************************************\n*****\tProgram Output for Section K, L, M, N\t*****\n***************************************************************");
-
 		
 		PathManager manager = new PathManager(new File("final.data"));
-		manager.findPaths();
 		
 //		JFileChooser chooser = new JFileChooser();
 //		
 //		if ( chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION )
 //			edgeNodeBuilder.readFromFile(chooser.getSelectedFile());
+		
+		System.out.println("***************************************************************\n*****\tProgram Output for Section M\t*****\n***************************************************************");
+		manager.findPaths();
 	}
 
 }
